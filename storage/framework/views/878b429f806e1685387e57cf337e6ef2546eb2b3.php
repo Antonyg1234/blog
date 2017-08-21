@@ -1,8 +1,7 @@
-@extends('site.app')
-@section('bg-img',asset('site/img/contact-bg.jpg'))
-@section('heading','Reset Password')
-@section('sub-title','')
-@section('main-content')
+<?php $__env->startSection('bg-img',asset('site/img/contact-bg.jpg')); ?>
+<?php $__env->startSection('heading','Reset Password'); ?>
+<?php $__env->startSection('sub-title',''); ?>
+<?php $__env->startSection('main-content'); ?>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -10,55 +9,57 @@
                 <div class="panel-heading">Reset Password</div>
 
                 <div class="panel-body">
-                    @if (session('status'))
+                    <?php if(session('status')): ?>
                         <div class="alert alert-success">
-                            {{ session('status') }}
+                            <?php echo e(session('status')); ?>
+
                         </div>
-                    @endif
+                    <?php endif; ?>
 
-                    <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
-                        {{ csrf_field() }}
+                    <form class="form-horizontal" method="POST" action="<?php echo e(route('password.request')); ?>">
+                        <?php echo e(csrf_field()); ?>
 
-                        <input type="hidden" name="token" value="{{ $token }}">
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <input type="hidden" name="token" value="<?php echo e($token); ?>">
+
+                        <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" required autofocus>
+                                <input id="email" type="email" class="form-control" name="email" value="<?php echo e(isset($email) ? $email : old('email')); ?>" required autofocus>
 
-                                @if ($errors->has('email'))
+                                <?php if($errors->has('email')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong><?php echo e($errors->first('email')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
 
-                                @if ($errors->has('password'))
+                                <?php if($errors->has('password')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong><?php echo e($errors->first('password')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                        <div class="form-group<?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
 
-                                @if ($errors->has('password_confirmation'))
+                                <?php if($errors->has('password_confirmation')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                        <strong><?php echo e($errors->first('password_confirmation')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -75,4 +76,6 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('site.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -19,7 +19,9 @@
         <div class="box-header">
           <h3 class="box-title">Post Detail</h3>
           <div class="pull-right">
-            <a href="<?php echo e(route('post.create')); ?>" class="btn btn-primary">Add New</a>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.create', Auth::user())): ?>
+              <a href="<?php echo e(route('post.create')); ?>" class="btn btn-primary">Add New</a>
+            <?php endif; ?>
           </div>
         </div>
         <!-- /.box-header -->
@@ -32,8 +34,12 @@
               <th>Sub Title</th>
               <th>Body</th>
               <th>Publish</th>
+              <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.update', Auth::user())): ?>
               <th>Edit</th>
+              <?php endif; ?>
+              <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.update', Auth::user())): ?>
               <th>Delete</th>
+              <?php endif; ?>
 
             </tr>
             </thead>
@@ -45,7 +51,12 @@
                 <td><?php echo e($post->subtitle); ?></td>
                 <td><?php echo e(str_limit($post->body, $limit = 200, $end = '...')); ?></td>
                 <td>Yes</td>
+
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.update', Auth::user())): ?>
                 <td><a href="<?php echo e(route('post.edit',$post->id)); ?>" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                <?php endif; ?>
+
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.delete', Auth::user())): ?>
                 <form action="<?php echo e(route('post.destroy',$post->id)); ?>" id="delete-form-<?php echo e($post->id); ?>" method="post">
                   <?php echo e(csrf_field()); ?>
 
@@ -62,7 +73,7 @@
                           event.preventDefault();
                           }" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>
-
+                <?php endif; ?>
               </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
@@ -76,8 +87,12 @@
               <th>Sub Title</th>
               <th>Body</th>
               <th>Publish</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.update', Auth::user())): ?>
+                <th>Edit</th>
+              <?php endif; ?>
+              <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.update', Auth::user())): ?>
+                <th>Delete</th>
+              <?php endif; ?>
 
             </tr>
             </tfoot>

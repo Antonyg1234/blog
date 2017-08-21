@@ -20,7 +20,9 @@
         <div class="box-header">
           <h3 class="box-title">Post Detail</h3>
           <div class="pull-right">
-            <a href="{{route('post.create')}}" class="btn btn-primary">Add New</a>
+            @can('posts.create', Auth::user())
+              <a href="{{route('post.create')}}" class="btn btn-primary">Add New</a>
+            @endcan
           </div>
         </div>
         <!-- /.box-header -->
@@ -33,8 +35,12 @@
               <th>Sub Title</th>
               <th>Body</th>
               <th>Publish</th>
+              @can('posts.update', Auth::user())
               <th>Edit</th>
+              @endcan
+              @can('posts.update', Auth::user())
               <th>Delete</th>
+              @endcan
 
             </tr>
             </thead>
@@ -46,7 +52,12 @@
                 <td>{{$post->subtitle}}</td>
                 <td>{{str_limit($post->body, $limit = 200, $end = '...')}}</td>
                 <td>Yes</td>
+
+                @can('posts.update', Auth::user())
                 <td><a href="{{route('post.edit',$post->id)}}" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                @endcan
+
+                @can('posts.delete', Auth::user())
                 <form action="{{route('post.destroy',$post->id)}}" id="delete-form-{{$post->id}}" method="post">
                   {{csrf_field()}}
                   {{method_field('DELETE')}}
@@ -61,7 +72,7 @@
                           event.preventDefault();
                           }" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>
-
+                @endcan
               </tr>
             @endforeach
 
@@ -75,8 +86,12 @@
               <th>Sub Title</th>
               <th>Body</th>
               <th>Publish</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              @can('posts.update', Auth::user())
+                <th>Edit</th>
+              @endcan
+              @can('posts.update', Auth::user())
+                <th>Delete</th>
+              @endcan
 
             </tr>
             </tfoot>

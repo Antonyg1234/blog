@@ -8,6 +8,17 @@ use App\Model\site\category;
 
 class CategoryController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     */
+
+    public function __construct()
+    {
+        $this->middleware('can:posts.category');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -26,6 +37,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        return 'nnnnnnnn';
         return view('admin/category/category');
     }
 

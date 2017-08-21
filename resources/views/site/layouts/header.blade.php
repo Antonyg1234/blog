@@ -7,23 +7,27 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
+                @if(Auth::user())
+                <a class="navbar-brand" href="index.html">{{Auth::user()->name}}</a>
+                @else
                 <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+                @endif
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{{route('home')}}">Home</a>
+                        <a href="{{route('base')}}">Home</a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
+                        <a href="{{route('about')}}">About</a>
                     </li>
                     <li>
-                        <a href="">Sample Post</a>
+                        <a href="{{route('sample-post')}}">Sample Post</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="{{route('contact')}}">Contact</a>
                     </li>
                     @if(Auth::guest())
                         <li>

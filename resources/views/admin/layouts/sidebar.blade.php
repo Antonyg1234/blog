@@ -8,8 +8,7 @@
           <img src="{{asset('admin/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <p>{{Auth::user()->name}}</p>
         </div>
       </div>
       <!-- search form -->
@@ -34,6 +33,7 @@
             </span>
           </a>
         </li>
+        @can('posts.category',Auth::user())
         <li class="treeview">
           <a href="{{route('category.index')}}">
             <i class="fa fa-dashboard"></i> <span>Categories</span>
@@ -42,6 +42,8 @@
             </span>
           </a>
         </li>
+        @endcan
+        @can('posts.tag',Auth::user())
         <li class="treeview">
           <a href="{{route('tag.index')}}">
             <i class="fa fa-dashboard"></i> <span>Tags</span>
@@ -50,6 +52,8 @@
             </span>
           </a>
         </li>
+        @endcan
+        @can('posts.admin',Auth::user())
         <li class="treeview">
           <a href="{{route('user.index')}}">
             <i class="fa fa-dashboard"></i> <span>Users</span>
@@ -74,7 +78,7 @@
             </span>
           </a>
         </li>
-        
+        @endcan
         
       </ul>
     </section>

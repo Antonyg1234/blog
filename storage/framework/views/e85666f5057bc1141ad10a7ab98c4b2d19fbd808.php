@@ -18,7 +18,27 @@
 
                         </h3>
                     </a>
-                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> <?php echo e($post->created_at->diffForHumans()); ?></p>
+                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> <?php echo e($post->created_at->diffForHumans()); ?>
+
+                        <a href="javascript:void(0)" class="likes" data-id="<?php echo e($post->id); ?>"
+                                data-user_id="<?php echo e(Auth::id()); ?>"
+                                data-liked="<?php $__currentLoopData = $likes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $like): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                  <?php if(($like->post_id==$post->id) && ($like->user_id==Auth::id())): ?>
+                                    <?php echo e(1); ?>
+
+                                  <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>"
+                                ><i id="like_color<?php echo e($post->id); ?>"
+
+                                style="color:<?php $__currentLoopData = $likes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $like): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                 <?php if(($like->post_id==$post->id) && ($like->user_id==Auth::id())): ?>
+                                                     <?php echo e('green'); ?>
+
+                                                 <?php endif; ?>
+                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>" class="fa fa-thumbs-up" aria-hidden="true"><span id="likes<?php echo e($post->id); ?>">(<?php echo e($post->likes); ?>)</span></i>
+                        </a>
+                    </p>
+
                 </div>
                 <hr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

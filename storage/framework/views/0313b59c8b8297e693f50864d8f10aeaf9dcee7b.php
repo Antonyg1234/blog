@@ -7,23 +7,27 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
+                <?php if(Auth::user()): ?>
+                <a class="navbar-brand" href="index.html"><?php echo e(Auth::user()->name); ?></a>
+                <?php else: ?>
                 <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+                <?php endif; ?>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="<?php echo e(route('home')); ?>">Home</a>
+                        <a href="<?php echo e(route('base')); ?>">Home</a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
+                        <a href="<?php echo e(route('about')); ?>">About</a>
                     </li>
                     <li>
-                        <a href="">Sample Post</a>
+                        <a href="<?php echo e(route('sample-post')); ?>">Sample Post</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="<?php echo e(route('contact')); ?>">Contact</a>
                     </li>
                     <?php if(Auth::guest()): ?>
                         <li>

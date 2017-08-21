@@ -8,19 +8,19 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                   <small>Created at <?php echo e($slug->created_at->diffForHumans()); ?></small>
                     <?php $__currentLoopData = $slug->categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <small class="pull-right" style="margin:10px">
-                        <?php echo e($category->name); ?>
+                        <a href="<?php echo e(url('category/'.$category->slug)); ?>"><small class="pull-right" style="margin:10px">
+                             <?php echo e($category->name); ?>
 
-                        </small>
+                        </small></a>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                  <?php echo htmlspecialchars_decode($slug->body); ?>
+                   <?php echo htmlspecialchars_decode($slug->body); ?>
 
                     <h3>Cloud Tags</h3>
                     <?php $__currentLoopData = $slug->tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <small class="pull-left" style="margin:10px; border-radius:5px; border:1px solid gray; padding:5px">
+                        <a href="<?php echo e(url('tags/'.$tag->slug)); ?>"><small class="pull-left" style="margin:10px; border-radius:5px; border:1px solid gray; padding:5px">
                             <?php echo e($tag->name); ?>
 
-                        </small>
+                        </small></a>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>

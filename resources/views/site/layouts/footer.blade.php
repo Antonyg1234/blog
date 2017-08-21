@@ -48,5 +48,11 @@
 
     <!-- Theme JavaScript -->
     <script src="{{asset('site/js/clean-blog.min.js')}}"></script>
+
+    <!-- Custom Javascript -->
+    <script src="{{asset('site/js/likes.js')}}"></script>
+    {{--<script>--}}
+        {{--var like_count='http://localhost:8000/like';--}}
+    {{--</script>--}}
     @section('footer')
     @show

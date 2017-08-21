@@ -31,6 +31,7 @@
               <th>Sr. No.</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Roles</th>
               <th>Status</th>
               <th>Edit</th>
               <th>Delete</th>
@@ -42,6 +43,11 @@
               <td>{{$loop->index+1}}</td>
               <td>{{$user->name}}</td>
               <td>{{$user->email}}</td>
+              <td>
+                @foreach($user->roles as $role)
+                {{$role->role}}{{','}}
+                @endforeach
+              </td>
               <td>{{$user->status? 'Active':'Inactive'}}</td>
               <td><a href="{{route('user.edit',$user->id)}}" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
               <form action="{{route('user.destroy',$user->id)}}" id="delete-form-{{$user->id}}" method="post">

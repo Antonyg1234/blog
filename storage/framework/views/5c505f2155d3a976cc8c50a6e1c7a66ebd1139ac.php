@@ -8,8 +8,7 @@
           <img src="<?php echo e(asset('admin/dist/img/user2-160x160.jpg')); ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <p><?php echo e(Auth::user()->name); ?></p>
         </div>
       </div>
       <!-- search form -->
@@ -34,6 +33,7 @@
             </span>
           </a>
         </li>
+        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.category',Auth::user())): ?>
         <li class="treeview">
           <a href="<?php echo e(route('category.index')); ?>">
             <i class="fa fa-dashboard"></i> <span>Categories</span>
@@ -42,6 +42,8 @@
             </span>
           </a>
         </li>
+        <?php endif; ?>
+        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.tag',Auth::user())): ?>
         <li class="treeview">
           <a href="<?php echo e(route('tag.index')); ?>">
             <i class="fa fa-dashboard"></i> <span>Tags</span>
@@ -50,6 +52,8 @@
             </span>
           </a>
         </li>
+        <?php endif; ?>
+        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.admin',Auth::user())): ?>
         <li class="treeview">
           <a href="<?php echo e(route('user.index')); ?>">
             <i class="fa fa-dashboard"></i> <span>Users</span>
@@ -74,7 +78,7 @@
             </span>
           </a>
         </li>
-        
+        <?php endif; ?>
         
       </ul>
     </section>

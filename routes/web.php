@@ -1,59 +1,62 @@
 <?php
 
-    Route::group(['namespace'=>'Site'], function(){
+    Route::group(['namespace'=>'Site','middleware'=>'auth'], function(){
 
-    Route::get('posts/{slug}','postController@posts');
+        Route::get('posts/{slug}','postController@posts');
 
-    Route::get('/','HomeController@index');
+        Route::get('tags/{tag}','HomeController@tag');
 
-});
+        Route::get('category/{category}','HomeController@category');
 
+    });
 
-//Route::get('/', function () {
-//
-//    return view('site.home');
-//});
+    Route::get('/','Site\HomeController@index')->name('base');
 
+    Route::get('like','Site\HomeController@likes')->name('like');
 
-//Route::get('posts', function () {
-//    return view('site.post');
-//});
-
+    Route::get('about', function () {
+        return view('site.about');
+    })->name('about');
 
 
-Route::get('user', function () {
-    return view('admin/home');
-});
-
-Route::get('user', function () {
-    return view('admin/home');
-});
-
-
-Route::group(['namespace'=>'Admin','middleware'=>'auth:admin'], function(){
-
-    Route::resource('post','PostController');
-
-    Route::resource('tag','TagController');
-
-    Route::resource('category','CategoryController');
-
-    Route::resource('user','UserController');
-
-    Route::resource('role','RoleController');
-
-    Route::resource('permission','PermissionController');
-});
-
-Route::group(['namespace'=>'Admin'], function(){
-    Route::get('admin-login','Auth\LoginController@showLoginForm')->name('admin.login');
-    Route::post('admin-login', 'Auth\LoginController@login');
-});
+    Route::get('contact', function () {
+        return view('site.contact');
+    })->name('contact');
 
 
 
+    Route::get('sample-post', function () {
+        return view('site.sample-post');
+    })->name('sample-post');
 
 
-Auth::routes();
+    Route::get('test', function () {
+        return view('admin/home');
+    });
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::group(['namespace'=>'Admin','middleware'=>'auth:admin'], function(){
+    
+        Route::resource('post','PostController');
+    
+        Route::resource('tag','TagController');
+    
+        Route::resource('category','CategoryController');
+    
+        Route::resource('user','UserController');
+    
+        Route::resource('role','RoleController');
+    
+        Route::resource('permission','PermissionController');
+    });
+
+
+    Route::group(['namespace'=>'Admin'], function(){
+        Route::get('admin-login','Auth\LoginController@showLoginForm')->name('admin.login');
+        Route::post('admin-login', 'Auth\LoginController@login');
+    });
+
+
+    Auth::routes();
+    
+    Route::get('/home', 'HomeController@index')->name('home');

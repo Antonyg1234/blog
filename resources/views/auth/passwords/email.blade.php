@@ -1,6 +1,8 @@
-@extends('layouts.app')
-
-@section('content')
+@extends('site.app')
+@section('bg-img',asset('site/img/contact-bg.jpg'))
+@section('heading','Retreive Password')
+@section('sub-title','')
+@section('main-content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

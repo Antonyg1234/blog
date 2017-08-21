@@ -48,5 +48,11 @@
 
     <!-- Theme JavaScript -->
     <script src="<?php echo e(asset('site/js/clean-blog.min.js')); ?>"></script>
+
+    <!-- Custom Javascript -->
+    <script src="<?php echo e(asset('site/js/likes.js')); ?>"></script>
+    
+        
+    
     <?php $__env->startSection('footer'); ?>
     <?php echo $__env->yieldSection(); ?>

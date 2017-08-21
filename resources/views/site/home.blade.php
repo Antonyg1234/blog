@@ -17,7 +17,24 @@
                             {{$post->subtitle}}
                         </h3>
                     </a>
-                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> {{$post->created_at->diffForHumans()}}</p>
+                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> {{$post->created_at->diffForHumans()}}
+                        <a href="javascript:void(0)" class="likes" data-id="{{$post->id}}"
+                                data-user_id="{{Auth::id()}}"
+                                data-liked="@foreach($likes as $like)
+                                  @if(($like->post_id==$post->id) && ($like->user_id==Auth::id()))
+                                    {{1}}
+                                  @endif
+                                @endforeach"
+                                ><i id="like_color{{$post->id}}"
+
+                                style="color:@foreach($likes as $like)
+                                                 @if(($like->post_id==$post->id) && ($like->user_id==Auth::id()))
+                                                     {{'green'}}
+                                                 @endif
+                                             @endforeach" class="fa fa-thumbs-up" aria-hidden="true"><span id="likes{{$post->id}}">({{$post->likes}})</span></i>
+                        </a>
+                    </p>
+
                 </div>
                 <hr>
                 @endforeach

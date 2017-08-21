@@ -30,6 +30,7 @@
               <th>Sr. No.</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Roles</th>
               <th>Status</th>
               <th>Edit</th>
               <th>Delete</th>
@@ -41,6 +42,12 @@
               <td><?php echo e($loop->index+1); ?></td>
               <td><?php echo e($user->name); ?></td>
               <td><?php echo e($user->email); ?></td>
+              <td>
+                <?php $__currentLoopData = $user->roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php echo e($role->role); ?><?php echo e(','); ?>
+
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+              </td>
               <td><?php echo e($user->status? 'Active':'Inactive'); ?></td>
               <td><a href="<?php echo e(route('user.edit',$user->id)); ?>" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
               <form action="<?php echo e(route('user.destroy',$user->id)); ?>" id="delete-form-<?php echo e($user->id); ?>" method="post">
