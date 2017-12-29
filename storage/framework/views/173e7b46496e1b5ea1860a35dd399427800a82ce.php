@@ -41,7 +41,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="title">Post Title</label>
-                                        <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="<?php echo e($post->title); ?>">
+                                        <input type="text" class="form-control" name="title" id="title" onKeyPress="KeyPress()" placeholder="Title" value="<?php echo e($post->title); ?>">
 
                                     </div>
                                     <div class="form-group">
@@ -144,6 +144,7 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('main-js'); ?>
     <script src="<?php echo e(asset('admin/plugins/select2/select2.full.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('site/js/likes.js')); ?>"></script>
     <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
     <script>
         $(document).ready(function () {

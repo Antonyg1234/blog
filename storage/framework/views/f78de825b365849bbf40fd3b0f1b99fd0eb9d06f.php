@@ -37,7 +37,7 @@
               <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.update', Auth::user())): ?>
               <th>Edit</th>
               <?php endif; ?>
-              <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.update', Auth::user())): ?>
+              <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.delete', Auth::user())): ?>
               <th>Delete</th>
               <?php endif; ?>
 
@@ -90,7 +90,7 @@
               <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.update', Auth::user())): ?>
                 <th>Edit</th>
               <?php endif; ?>
-              <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.update', Auth::user())): ?>
+              <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('posts.delete', Auth::user())): ?>
                 <th>Delete</th>
               <?php endif; ?>
 

@@ -22,6 +22,7 @@
 
                         <a href="javascript:void(0)" class="likes" data-id="<?php echo e($post->id); ?>"
                                 data-user_id="<?php echo e(Auth::id()); ?>"
+                                data-login="<?php echo e(Auth::check()); ?>"
                                 data-liked="<?php $__currentLoopData = $likes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $like): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                   <?php if(($like->post_id==$post->id) && ($like->user_id==Auth::id())): ?>
                                     <?php echo e(1); ?>

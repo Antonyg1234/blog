@@ -39,6 +39,12 @@ class PostController extends Controller
         return redirect(route('post.index'));
     }
 
+    public function slug(Request $request)
+    {
+        $slug = str_slug($request->slug, '-');
+        return $slug;
+    }
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -57,7 +63,6 @@ class PostController extends Controller
 
         if($request->hasFile('image')){
             $imageName=$request->image->store('public');
-
         }
 
         $post=new post;
@@ -65,6 +70,7 @@ class PostController extends Controller
         $post->subtitle=$request->sub_title;
         $post->slug=$request->slug;
         $post->image= $imageName;
+        $post->likes= 0;
         $post->body=$request->body;
         $post->status=$request->status;
 

@@ -64,12 +64,12 @@
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
           <li>
-            <a href="<?php echo e(route('logout')); ?>"
+            <a href="<?php echo e(route('admin.logout')); ?>"
              onclick="event.preventDefault();
              document.getElementById('logout-form').submit();">
              <i class="fa fa-sign-out" aria-hidden="true"></i>
             </a>
-            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+            <form id="logout-form" action="<?php echo e(route('admin.logout')); ?>" method="POST" style="display: none;">
               <?php echo e(csrf_field()); ?>
 
             </form>

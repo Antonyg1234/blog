@@ -14,6 +14,9 @@
 
     Route::get('like','Site\HomeController@likes')->name('like');
 
+    Route::get('slug','Admin\PostController@slug')->name('slug');
+
+
     Route::get('about', function () {
         return view('site.about');
     })->name('about');
@@ -54,9 +57,14 @@
     Route::group(['namespace'=>'Admin'], function(){
         Route::get('admin-login','Auth\LoginController@showLoginForm')->name('admin.login');
         Route::post('admin-login', 'Auth\LoginController@login');
+        Route::post('admin-logout', 'Auth\LoginController@logout')->name('admin.logout');
     });
+
 
 
     Auth::routes();
     
     Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+    Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');

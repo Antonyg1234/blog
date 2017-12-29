@@ -57,6 +57,7 @@
         <!-- /.col-->
       </div>
       <!-- ./row -->
+     </div>
     </section>
     <!-- /.content -->
   </div>

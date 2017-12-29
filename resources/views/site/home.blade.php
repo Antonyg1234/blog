@@ -20,6 +20,7 @@
                     <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> {{$post->created_at->diffForHumans()}}
                         <a href="javascript:void(0)" class="likes" data-id="{{$post->id}}"
                                 data-user_id="{{Auth::id()}}"
+                                data-login="{{Auth::check()}}"
                                 data-liked="@foreach($likes as $like)
                                   @if(($like->post_id==$post->id) && ($like->user_id==Auth::id()))
                                     {{1}}

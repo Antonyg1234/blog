@@ -16,6 +16,7 @@ class CategoryController extends Controller
 
     public function __construct()
     {
+        //echo "nnnnnnn";
         $this->middleware('can:posts.category');
     }
 
@@ -37,10 +38,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return 'nnnnnnnn';
-        return view('admin/category/category');
+        echo "nnnnnnn";
+        //return view('admin/category/category');
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *

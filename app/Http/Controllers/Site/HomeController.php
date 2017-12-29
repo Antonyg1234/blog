@@ -24,17 +24,18 @@ class HomeController extends Controller
     {
         $posts=post::where('status',1)->paginate(2);
         $likes=post_user::all();
-        //return $posts;
         return view('site.home',compact('posts','likes'));
     }
 
     public function tag(tag $tag)
     {
+        return $tag;
         return $tag->posts;
     }
 
     public function category(category $category)
     {
+        return $category;
         return $category->posts;
     }
 

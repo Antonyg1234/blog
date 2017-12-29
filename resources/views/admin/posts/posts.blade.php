@@ -38,7 +38,7 @@
                <div class="col-lg-6">
                 <div class="form-group">
                   <label for="title">Post Title</label>
-                  <input type="text" class="form-control" name="title" id="title" placeholder="Title">
+                  <input type="text" class="form-control" name="title" id="title" onKeyPress="KeyPress()" placeholder="Title">
                  
                 </div>
                 <div class="form-group">
@@ -128,6 +128,7 @@
 
 @section('main-js')
     <script src="{{asset('admin/plugins/select2/select2.full.min.js')}}"></script>
+    <script src="{{asset('site/js/likes.js')}}"></script>
     <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
     <script>
         $(document).ready(function () {

@@ -38,7 +38,7 @@
               @can('posts.update', Auth::user())
               <th>Edit</th>
               @endcan
-              @can('posts.update', Auth::user())
+              @can('posts.delete', Auth::user())
               <th>Delete</th>
               @endcan
 
@@ -89,7 +89,7 @@
               @can('posts.update', Auth::user())
                 <th>Edit</th>
               @endcan
-              @can('posts.update', Auth::user())
+              @can('posts.delete', Auth::user())
                 <th>Delete</th>
               @endcan
 
